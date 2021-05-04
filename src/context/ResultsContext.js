@@ -23,11 +23,11 @@ const ResultsContextProvider = (props) => {
               setError(error);
             }
           );
-      }, []);
+      }, [title]);
 
 
       return (
-          <ResultsContext.Provider value = {{ error, searchList, title, setTitle}}>
+          <ResultsContext.Provider value = {{ searchList, title, setTitle}}>
               {props.children}
             </ResultsContext.Provider>
       )
