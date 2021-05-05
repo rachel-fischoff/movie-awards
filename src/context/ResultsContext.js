@@ -22,11 +22,11 @@ const ResultsContextProvider = (props) => {
       );
   }, [title]);
 
-  useEffect(() => {
-    if (nominatedFilmList.length > 0) {
-      //do something
-    }
-  }, [nominatedFilmList]);
+  // useEffect(() => {
+  //   if (nominatedFilmList.length > 0) {
+  //     //do something
+  //   }
+  // }, [nominatedFilmList]);
 
   return (
     <ResultsContext.Provider

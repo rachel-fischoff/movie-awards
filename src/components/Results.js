@@ -1,40 +1,75 @@
-import React, { useContext, useState, useEffect } from "react";
+import React, { useContext, useState } from "react";
 import { ResultsContext } from "../context/ResultsContext";
+import { makeStyles } from "@material-ui/core/styles";
+import Card from "@material-ui/core/Card";
+import CardActionArea from "@material-ui/core/CardActionArea";
+import CardActions from "@material-ui/core/CardActions";
+import CardContent from "@material-ui/core/CardContent";
+import CardMedia from "@material-ui/core/CardMedia";
+import Button from "@material-ui/core/Button";
+import Typography from "@material-ui/core/Typography";
+import Input from "@material-ui/core/Input";
+
+const useStyles = makeStyles({
+  root: {
+    maxWidth: 345,
+  },
+  media: {
+    height: 140,
+  },
+});
 
 export default function Results() {
-  const { searchList, setNominatedFilmList, nominatedFilmList } = useContext(
-    ResultsContext
-  );
+  const classes = useStyles();
+  const { searchList, nominatedFilmList, setNominatedFilmList } = useContext(ResultsContext);
 
-  const handleNomination = (e) => {
-    e.preventDefault();
-    nominatedFilmList.push({ title: e.target.name, year: e.target.value });
+  const handleNomination = (movie) => {
+    setNominatedFilmList([...nominatedFilmList,{
+      title: movie.Title,
+      year: movie.Year,
+      id: movie.imdbID
+    }]);
     console.log(nominatedFilmList);
   };
 
   return (
     <div>
       Results
-      <ul>
-        {searchList &&
-          searchList.map((item) => (
-            <div>
-              <img src = {item.Poster} alt="movie-poster"/>
-              <li key={item.imdbID}>
-                {item.Title} ({item.Year})
-              </li>
-              <button
-                onClick={handleNomination}
-                name={item.Title}
-                value={item.Year}
+      {searchList &&
+        searchList.map((movie) => (
+          <Card className={classes.root}>
+            <CardActionArea>
+              <CardMedia
+                className={classes.media}
+                image={movie.Poster}
+                title="Movie Poster"
+              />
+              <CardContent>
+                <Typography gutterBottom variant="h5" component="h2">
+                  {movie.Title}
+                </Typography>
+                <Typography variant="body2" color="textSecondary" component="p">
+                  {movie.Year}
+                </Typography>
+              </CardContent>
+            </CardActionArea>
+            <CardActions>
+              <Button
+                type="button"
+                size="small"
+                color="primary"
+                variant="contained"
+                onClick={()=>handleNomination(movie)}
                 //TODO: create logic to disable only one button at a time
-                // disabled={}
+                disabled={nominatedFilmList && !!nominatedFilmList.find(
+                  (nominated) => nominated.id === movie.imdbID
+                )}
               >
                 Nominate
-              </button>
-            </div>
-          ))}
-      </ul>
+              </Button>
+            </CardActions>
+          </Card>
+        ))}
     </div>
   );
 }
