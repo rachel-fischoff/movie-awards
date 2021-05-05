@@ -4,22 +4,18 @@ export const ResultsContext = createContext ();
 
 const ResultsContextProvider = (props) => {
     const [error, setError] = useState(null);
-    const [isLoaded, setIsLoaded] = useState(false);
     const [title, setTitle] = useState('');
     const [searchList, setSearchList] = useState([]);
     const [nominatedFilmList, setNominatedFilmList] = useState([])
-
 
     useEffect(() => {
         fetch(`http://www.omdbapi.com/?s=${title}&apikey=b7e174c6`)
           .then((res) => res.json())
           .then(
             (result) => {
-              setIsLoaded(true);
               setSearchList(result.Search);
             },
             (error) => {
-              setIsLoaded(true);
               setError(error);
             }
           );
