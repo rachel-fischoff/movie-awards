@@ -6,14 +6,9 @@ export default function Results() {
     ResultsContext
   );
 
-  const [nominatedFilm, setNominatedFilm] = useState();
-  // const [disableButton, setDisableButton] = useState(false);
-
   const handleNomination = (e) => {
     e.preventDefault();
-    setNominatedFilm({ title: e.target.name, year: e.target.value });
-    nominatedFilmList.push(nominatedFilm);
-    // setDisableButton(true);
+    nominatedFilmList.push({ title: e.target.name, year: e.target.value });
     console.log(nominatedFilmList);
   };
 
@@ -32,6 +27,7 @@ export default function Results() {
                 onClick={handleNomination}
                 name={item.Title}
                 value={item.Year}
+                //TODO: create logic to disable only one button at a time
                 // disabled={}
               >
                 Nominate

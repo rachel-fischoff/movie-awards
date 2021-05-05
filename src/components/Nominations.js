@@ -8,7 +8,7 @@ export default function Nominations() {
     <div>
       Nominations
       <ul>
-        {nominatedFilmList &&
+        {nominatedFilmList ?
           nominatedFilmList.map((item) => (
             <div>
               <li>
@@ -17,7 +17,7 @@ export default function Nominations() {
               </li>
               <button> Remove </button>
             </div>
-          ))}
+          )): null}
       </ul>
     </div>
   );
