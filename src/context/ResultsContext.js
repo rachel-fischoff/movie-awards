@@ -7,6 +7,7 @@ const ResultsContextProvider = (props) => {
     const [isLoaded, setIsLoaded] = useState(false);
     const [title, setTitle] = useState('');
     const [searchList, setSearchList] = useState([]);
+    const [nominatedFilmList, setNominatedFilmList] = useState([])
 
 
     useEffect(() => {
@@ -16,7 +17,6 @@ const ResultsContextProvider = (props) => {
             (result) => {
               setIsLoaded(true);
               setSearchList(result.Search);
-              console.log(result);
             },
             (error) => {
               setIsLoaded(true);
@@ -27,7 +27,7 @@ const ResultsContextProvider = (props) => {
 
 
       return (
-          <ResultsContext.Provider value = {{ searchList, title, setTitle}}>
+          <ResultsContext.Provider value = {{ searchList, title, setTitle, nominatedFilmList, setNominatedFilmList}}>
               {props.children}
             </ResultsContext.Provider>
       )
