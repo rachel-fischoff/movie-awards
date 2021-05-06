@@ -34,10 +34,10 @@ export default function Nominations() {
 
   return (
     <div>
-      <Typography variant="h5" component="h2">
+      <Typography variant="h5">
         Nominations
       </Typography>
-      {nominatedFilmList.length > 0
+      { 5 >= nominatedFilmList.length > 0 
         ? nominatedFilmList.map((movie) => (
             <Card className={classes.root} variant="outlined" key={movie.id}>
               <CardContent>

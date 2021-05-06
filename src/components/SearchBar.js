@@ -15,7 +15,7 @@ export default function SearchBar() {
 
   return (
     <div>
-
+{/* //TODO: chnage to material ui  */}
       <form onSubmit={handleSubmit}>
         <label htmlFor="title-search"> Movie Title </label>
         <input

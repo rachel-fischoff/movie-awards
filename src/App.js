@@ -21,10 +21,10 @@ function App() {
           justify="center"
           alignItems="flex-start"
         >
-          <Grid item md={3}>
+          <Grid item >
             <Results />
           </Grid>
-          <Grid item md={3}>
+          <Grid item >
             <Nominations />
           </Grid>
         </Grid>

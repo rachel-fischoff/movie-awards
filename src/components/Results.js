@@ -40,7 +40,7 @@ export default function Results() {
 
   return (
     <div>
-      <Typography variant="h5" component="h2">
+      <Typography variant="h5">
         Results
       </Typography>
       {searchList &&

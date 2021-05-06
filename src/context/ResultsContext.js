@@ -14,10 +14,12 @@ const ResultsContextProvider = (props) => {
       .then((res) => res.json())
       .then(
         (result) => {
+          //TODO: not return duplicates
+          // pagination ?
           setSearchList(result.Search);
         },
         (error) => {
-          //TODO - use error messaging somewhere 
+          //TODO - use error messaging somewhere
           setError(error);
         }
       );
