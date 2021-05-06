@@ -17,16 +17,11 @@ const ResultsContextProvider = (props) => {
           setSearchList(result.Search);
         },
         (error) => {
+          //TODO - use error messaging somewhere 
           setError(error);
         }
       );
   }, [title]);
-
-  // useEffect(() => {
-  //   if (nominatedFilmList.length > 0) {
-  //     //do something
-  //   }
-  // }, [nominatedFilmList]);
 
   return (
     <ResultsContext.Provider
@@ -44,18 +39,3 @@ const ResultsContextProvider = (props) => {
 };
 
 export default ResultsContextProvider;
-
-/*   if (error) {
-    return <div>Error: {error.message}</div>;
-  } else if (!isLoaded) {
-    return <div>Loading...</div>;
-  } else {
-    return (
-      <ul>
-        {searchList.map((item) => (
-          <li key={item.imdbID}>{item.Title} {item.Year}</li>
-        ))}
-      </ul>
-    );
-  }
-  */

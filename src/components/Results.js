@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 import { ResultsContext } from "../context/ResultsContext";
 import { makeStyles } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
@@ -8,7 +8,6 @@ import CardContent from "@material-ui/core/CardContent";
 import CardMedia from "@material-ui/core/CardMedia";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
-import Input from "@material-ui/core/Input";
 
 const useStyles = makeStyles({
   root: {
@@ -17,24 +16,33 @@ const useStyles = makeStyles({
   media: {
     height: 140,
   },
+  actions: {
+    justifyContent: "center",
+  },
 });
 
 export default function Results() {
   const classes = useStyles();
-  const { searchList, nominatedFilmList, setNominatedFilmList } = useContext(ResultsContext);
+  const { searchList, nominatedFilmList, setNominatedFilmList } = useContext(
+    ResultsContext
+  );
 
   const handleNomination = (movie) => {
-    setNominatedFilmList([...nominatedFilmList,{
-      title: movie.Title,
-      year: movie.Year,
-      id: movie.imdbID
-    }]);
-    console.log(nominatedFilmList);
+    setNominatedFilmList([
+      ...nominatedFilmList,
+      {
+        title: movie.Title,
+        year: movie.Year,
+        id: movie.imdbID,
+      },
+    ]);
   };
 
   return (
     <div>
-      Results
+      <Typography variant="h5" component="h2">
+        Results
+      </Typography>
       {searchList &&
         searchList.map((movie) => (
           <Card className={classes.root}>
@@ -53,17 +61,20 @@ export default function Results() {
                 </Typography>
               </CardContent>
             </CardActionArea>
-            <CardActions>
+            <CardActions className={classes.actions}>
               <Button
                 type="button"
                 size="small"
                 color="primary"
                 variant="contained"
-                onClick={()=>handleNomination(movie)}
+                onClick={() => handleNomination(movie)}
                 //TODO: create logic to disable only one button at a time
-                disabled={nominatedFilmList && !!nominatedFilmList.find(
-                  (nominated) => nominated.id === movie.imdbID
-                )}
+                disabled={
+                  nominatedFilmList &&
+                  !!nominatedFilmList.find(
+                    (nominated) => nominated.id === movie.imdbID
+                  )
+                }
               >
                 Nominate
               </Button>
