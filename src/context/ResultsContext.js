@@ -9,10 +9,10 @@ const ResultsContextProvider = (props) => {
   const [nominatedFilmList, setNominatedFilmList] = useState([]);
 
 
-  /*TODO: pagination, total response number, is response true or false, error messages
+  /*TODO: pagination?, total number of results , is response true or false, error messages
   don't return duplicates*/
   useEffect(() => {
-    axios.get(`http://www.omdbapi.com/?s=${title}&type=movie&apikey=b7e174c6`)
+    axios.get(`https://www.omdbapi.com/?s=${title}&type=movie&apikey=b7e174c6`)
       .then(response => {
           setSearchList(response.data.Search);
           console.log(response)

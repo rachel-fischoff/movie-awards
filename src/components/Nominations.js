@@ -37,7 +37,9 @@ export default function Nominations() {
       <Typography variant="h5">
         Nominations
       </Typography>
-      { (nominatedFilmList.length > 0 && nominatedFilmList.length <= 5)
+      {/* //TODO: fix that when the user clicks over 5 nominations an error banner appears 
+      nominatedFilmList.length <= 5 */}
+      { (nominatedFilmList.length > 0)
         ? nominatedFilmList.map((movie) => (
             <Card className={classes.root} variant="outlined" key={movie.id}>
               <CardContent>
