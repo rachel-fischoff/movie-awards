@@ -15,6 +15,7 @@ const useStyles = makeStyles({
   },
   media: {
     height: 140,
+    width: 200,
   },
   actions: {
     justifyContent: "center",
@@ -23,7 +24,7 @@ const useStyles = makeStyles({
 
 export default function Results() {
   const classes = useStyles();
-  const { searchList, nominatedFilmList, setNominatedFilmList } = useContext(
+  const { title, searchList, nominatedFilmList, setNominatedFilmList } = useContext(
     ResultsContext
   );
 
@@ -41,12 +42,13 @@ export default function Results() {
   return (
     <div>
       <Typography variant="h5">
-        Results
+        Results for {title}
       </Typography>
       {searchList &&
         searchList.map((movie) => (
           <Card className={classes.root}>
             <CardActionArea>
+              {/* //TODO: center image */}
               <CardMedia
                 className={classes.media}
                 image={movie.Poster}

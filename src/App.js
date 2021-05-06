@@ -9,7 +9,7 @@ import Divider from "@material-ui/core/Divider";
 function App() {
   return (
     <ResultsContextProvider>
-      <div className="App">
+      <main className="App">
         <header className="App-header">The Shoppies</header>
         <Divider />
         <SearchBar />
@@ -28,7 +28,7 @@ function App() {
             <Nominations />
           </Grid>
         </Grid>
-      </div>
+      </main>
     </ResultsContextProvider>
   );
 }

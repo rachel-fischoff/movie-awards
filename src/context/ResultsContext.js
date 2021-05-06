@@ -15,7 +15,6 @@ const ResultsContextProvider = (props) => {
     axios.get(`https://www.omdbapi.com/?s=${title}&type=movie&apikey=b7e174c6`)
       .then(response => {
           setSearchList(response.data.Search);
-          console.log(response)
         }).catch(error=>{console.log(error)})
   }, [title]);
 
