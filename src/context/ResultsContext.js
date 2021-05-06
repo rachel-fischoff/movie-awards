@@ -1,28 +1,22 @@
 import React, { createContext, useEffect, useState } from "react";
+import axios from 'axios';
 
 export const ResultsContext = createContext();
 
 const ResultsContextProvider = (props) => {
-  const [error, setError] = useState(null);
   const [title, setTitle] = useState("");
   const [searchList, setSearchList] = useState([]);
   const [nominatedFilmList, setNominatedFilmList] = useState([]);
 
+
+  /*TODO: pagination, total response number, is response true or false, error messages
+  don't return duplicates*/
   useEffect(() => {
-    //switch to axios ? for chrome
-    fetch(`http://www.omdbapi.com/?s=${title}&apikey=b7e174c6`)
-      .then((res) => res.json())
-      .then(
-        (result) => {
-          //TODO: not return duplicates
-          // pagination ?
-          setSearchList(result.Search);
-        },
-        (error) => {
-          //TODO - use error messaging somewhere
-          setError(error);
-        }
-      );
+    axios.get(`http://www.omdbapi.com/?s=${title}&type=movie&apikey=b7e174c6`)
+      .then(response => {
+          setSearchList(response.data.Search);
+          console.log(response)
+        }).catch(error=>{console.log(error)})
   }, [title]);
 
   return (
