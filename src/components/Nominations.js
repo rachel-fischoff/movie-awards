@@ -7,8 +7,6 @@ import CardContent from "@material-ui/core/CardContent";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 
-import Banner from "./Banner";
-
 const useStyles = makeStyles({
   root: {
     minWidth: 275,
@@ -29,7 +27,7 @@ export default function Nominations() {
 
   const removeNomination = (movie) => {
     const filteredArray = nominatedFilmList.filter(
-      (element) => element.id != movie.id
+      (element) => element.id !== movie.id
     );
     setNominatedFilmList(filteredArray);
   };
@@ -61,7 +59,6 @@ export default function Nominations() {
             </Card>
           ))
         : null}
-      {nominatedFilmList.length == 5 ? <Banner /> : null}
     </div>
   );
 }

@@ -1,8 +1,10 @@
 import React, { useContext, useRef } from "react";
 import { ResultsContext } from "../context/ResultsContext";
+import Divider from "@material-ui/core/Divider";
+import Banner from "./Banner";
 
 export default function SearchBar() {
-  const { setTitle } = useContext(ResultsContext);
+  const { setTitle, nominatedFilmList } = useContext(ResultsContext);
 
   const inputRef = useRef(null);
 
@@ -13,6 +15,7 @@ export default function SearchBar() {
 
   return (
     <div>
+
       <form onSubmit={handleSubmit}>
         <label htmlFor="title-search"> Movie Title </label>
         <input
@@ -25,6 +28,8 @@ export default function SearchBar() {
           Search
         </button>
       </form>
+      <Divider/>
+      {nominatedFilmList.length === 5 ? <Banner /> : null}
     </div>
   );
 }
