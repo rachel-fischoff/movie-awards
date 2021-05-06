@@ -37,7 +37,7 @@ export default function Nominations() {
       <Typography variant="h5">
         Nominations
       </Typography>
-      { 5 >= nominatedFilmList.length > 0 
+      { (nominatedFilmList.length > 0 && nominatedFilmList.length <= 5)
         ? nominatedFilmList.map((movie) => (
             <Card className={classes.root} variant="outlined" key={movie.id}>
               <CardContent>
