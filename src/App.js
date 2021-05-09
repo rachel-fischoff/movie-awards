@@ -21,7 +21,7 @@ function App() {
           justify="center"
           alignItems="flex-start"
         >
-          <Grid item >
+          <Grid item  >
             <Results />
           </Grid>
           <Grid item >

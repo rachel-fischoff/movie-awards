@@ -11,11 +11,14 @@ import Typography from "@material-ui/core/Typography";
 
 const useStyles = makeStyles({
   root: {
-    maxWidth: 345,
+    maxWidth: 300,
+    display:'inline-block',
+    justifyContent: 'center',
+    alignContent: 'center',
   },
   media: {
-    height: 140,
-    width: 200,
+    height: 200,
+    width: 100,
   },
   actions: {
     justifyContent: "center",
