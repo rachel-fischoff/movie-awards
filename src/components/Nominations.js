@@ -9,15 +9,13 @@ export default function Nominations() {
   return (
     <div>
       <Typography variant="h5">Nominations</Typography>
-      {nominatedFilmList.length < 6 ? (
+      {nominatedFilmList.length > 0 ? (
         <NominationsCard />
       ) : (
-        <div>
-          <p>you've already entered 5</p>{" "}
-          <NominationsCard /> 
-          {/* TODO: ADD NominationsCard component & the logic for over 5 on the list   */}
-       
-        </div>
+        <Typography>
+          {" "}
+          Please search for film to nominate for The Shoppies Movie Awards!{" "}
+        </Typography>
       )}
     </div>
   );

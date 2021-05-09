@@ -16,16 +16,16 @@ function App() {
         <Divider />
         <Grid
           container
-          spacing={2}
+          spacing={4}
           direction="row"
           justify="center"
           alignItems="flex-start"
         >
-          <Grid item >
-            <Results />
-          </Grid>
-          <Grid item >
+          <Grid item>
             <Nominations />
+          </Grid>
+          <Grid item>
+            <Results />
           </Grid>
         </Grid>
       </main>

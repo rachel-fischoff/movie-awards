@@ -15,7 +15,8 @@ const useStyles = makeStyles({
     display: "inline-block",
     justifyContent: "center",
     alignContent: "center",
-    backgroundColor: "#778899",
+    backgroundColor: "#E0E0E0",
+    padding: "5px",
   },
   media: {
     height: 200,
@@ -59,12 +60,13 @@ export default function Results() {
           <Card className={classes.root} key={movie.imdbID}>
             <CardActionArea>
               <CardContent>
-                {/* //TODO: center image */}
-                <CardMedia
-                  className={classes.media}
-                  image={movie.Poster}
-                  title="Movie Poster"
-                />
+                {movie.Poster === "N/A" ? null : (
+                  <CardMedia
+                    className={classes.media}
+                    image={movie.Poster}
+                    title="Movie Poster"
+                  />
+                )}
                 <Typography gutterBottom variant="body1">
                   {movie.Title}
                 </Typography>
