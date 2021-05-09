@@ -6,6 +6,7 @@ import Divider from "@material-ui/core/Divider";
 import Button from "@material-ui/core/Button";
 
 import Banner from "./Banner";
+import ErrorBanner from './ErrorBanner';
 
 const useStyles = makeStyles({
   label: {
@@ -19,7 +20,7 @@ const useStyles = makeStyles({
 export default function SearchBar() {
   const classes = useStyles();
 
-  const { setTitle, nominatedFilmList } = useContext(ResultsContext);
+  const { setTitle, nominatedFilmList, errorBanner } = useContext(ResultsContext);
 
   const inputRef = useRef(null);
 
@@ -54,6 +55,7 @@ export default function SearchBar() {
       </form>
       <Divider />
       {nominatedFilmList.length === 5 ? <Banner /> : null}
+      {errorBanner ? <ErrorBanner/> : null}
     </div>
   );
 }

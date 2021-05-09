@@ -1,4 +1,4 @@
-import React, { useContext, useState, useEffect } from "react";
+import React, { useContext } from "react";
 import { ResultsContext } from "../context/ResultsContext";
 import { makeStyles } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
@@ -15,6 +15,7 @@ const useStyles = makeStyles({
     display: "inline-block",
     justifyContent: "center",
     alignContent: "center",
+    backgroundColor: "#778899",
   },
   media: {
     height: 200,
@@ -32,11 +33,11 @@ export default function Results() {
     searchList,
     nominatedFilmList,
     setNominatedFilmList,
+    setErrorBanner,
   } = useContext(ResultsContext);
 
   const handleNomination = (movie) => {
-    // there's a delay (?)
-    if (nominatedFilmList.length <= 5) {
+    if (nominatedFilmList.length <= 4) {
       setNominatedFilmList([
         ...nominatedFilmList,
         {
@@ -45,9 +46,8 @@ export default function Results() {
           id: movie.imdbID,
         },
       ]);
-    }
-    else {
-      console.log('help')
+    } else if ((nominatedFilmList.length = 5)) {
+      setErrorBanner(true);
     }
   };
 
@@ -58,14 +58,14 @@ export default function Results() {
         searchList.map((movie) => (
           <Card className={classes.root} key={movie.imdbID}>
             <CardActionArea>
-              {/* //TODO: center image */}
-              <CardMedia
-                className={classes.media}
-                image={movie.Poster}
-                title="Movie Poster"
-              />
               <CardContent>
-                <Typography gutterBottom variant="h5" component="h2">
+                {/* //TODO: center image */}
+                <CardMedia
+                  className={classes.media}
+                  image={movie.Poster}
+                  title="Movie Poster"
+                />
+                <Typography gutterBottom variant="body1">
                   {movie.Title}
                 </Typography>
                 <Typography variant="body2" color="textSecondary" component="p">
