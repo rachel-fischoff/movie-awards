@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import { ResultsContext } from "../context/ResultsContext";
 import { makeStyles } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
@@ -12,9 +12,9 @@ import Typography from "@material-ui/core/Typography";
 const useStyles = makeStyles({
   root: {
     maxWidth: 300,
-    display:'inline-block',
-    justifyContent: 'center',
-    alignContent: 'center',
+    display: "inline-block",
+    justifyContent: "center",
+    alignContent: "center",
   },
   media: {
     height: 200,
@@ -27,29 +27,36 @@ const useStyles = makeStyles({
 
 export default function Results() {
   const classes = useStyles();
-  const { title, searchList, nominatedFilmList, setNominatedFilmList } = useContext(
-    ResultsContext
-  );
+  const {
+    title,
+    searchList,
+    nominatedFilmList,
+    setNominatedFilmList,
+  } = useContext(ResultsContext);
 
   const handleNomination = (movie) => {
-    setNominatedFilmList([
-      ...nominatedFilmList,
-      {
-        title: movie.Title,
-        year: movie.Year,
-        id: movie.imdbID,
-      },
-    ]);
+    // there's a delay (?)
+    if (nominatedFilmList.length <= 5) {
+      setNominatedFilmList([
+        ...nominatedFilmList,
+        {
+          title: movie.Title,
+          year: movie.Year,
+          id: movie.imdbID,
+        },
+      ]);
+    }
+    else {
+      console.log('help')
+    }
   };
 
   return (
     <div>
-      <Typography variant="h5">
-        Results for {title}
-      </Typography>
+      <Typography variant="h5">Results for {title}</Typography>
       {searchList &&
         searchList.map((movie) => (
-          <Card className={classes.root}>
+          <Card className={classes.root} key={movie.imdbID}>
             <CardActionArea>
               {/* //TODO: center image */}
               <CardMedia
@@ -73,7 +80,6 @@ export default function Results() {
                 color="primary"
                 variant="contained"
                 onClick={() => handleNomination(movie)}
-                //TODO: create logic to disable only one button at a time
                 disabled={
                   nominatedFilmList &&
                   !!nominatedFilmList.find(

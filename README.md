@@ -10,8 +10,6 @@ Upon opening the web page, the user can search for their favorite films in the s
 
 # Requirements To Set Up Locally
 1. A command line application such as Terminal.
-    - If you want to learn more about working in the command line, Wes Bos offers [a great free course](https://commandlinepoweruser.com/).
-    - If you are using Windows, [Hyper](https://hyper.is/) is a good, free command-line application you can download, install, and run.
 1. [Git](https://git-scm.com/) version control and a [GitHub account](https://github.com/).
     - You can check to see if Git is already installed on your computer by typing `git --version` into your command line application. If it is installed it will list the currently installed version (e.g. `git version 2.18.0`).
     - If you prefer to use a GUI to work with version control, GitHub offers a [free desktop app](https://desktop.github.com).
