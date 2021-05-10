@@ -8,6 +8,9 @@ The project is deployed through [Netlify](https://rachel-fischoff-movie-awards.n
 ## How Does it Work?
 Upon opening the web page, the user can search for their favorite films in the search bar & then nominate up for 5 for awards season. 
 
+## Next Steps
+Add Testing 
+
 # Requirements To Set Up Locally
 1. A command line application such as Terminal.
 1. [Git](https://git-scm.com/) version control and a [GitHub account](https://github.com/).

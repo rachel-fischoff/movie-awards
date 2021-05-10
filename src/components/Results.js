@@ -8,10 +8,14 @@ import CardContent from "@material-ui/core/CardContent";
 import CardMedia from "@material-ui/core/CardMedia";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
+import Grid from "@material-ui/core/Grid";
 
 const useStyles = makeStyles({
   root: {
-    maxWidth: 300,
+    height: "auto",
+    width: "auto",
+    maxWidth: 200,
+    maxHeight: 400,
     display: "inline-block",
     justifyContent: "center",
     alignContent: "center",
@@ -19,8 +23,12 @@ const useStyles = makeStyles({
     padding: "5px",
   },
   media: {
-    height: 200,
-    width: 100,
+    height: 150,
+    width: 75,
+  },
+  title: {
+    padding: "10px",
+    wordWrap: "break-word",
   },
   actions: {
     justifyContent: "center",
@@ -39,14 +47,17 @@ export default function Results() {
 
   const handleNomination = (movie) => {
     if (nominatedFilmList.length <= 4) {
-      setNominatedFilmList([
-        ...nominatedFilmList,
-        {
-          title: movie.Title,
-          year: movie.Year,
-          id: movie.imdbID,
-        },
-      ]);
+      let nominatedObject = {
+        title: movie.Title,
+        year: movie.Year,
+        id: movie.imdbID,
+      };
+      setNominatedFilmList([...nominatedFilmList, nominatedObject]);
+      //set to local storage for persistent state
+      localStorage.setItem(
+        `nominatedFilm${nominatedFilmList.length}`,
+        JSON.stringify(nominatedObject)
+      );
     } else if ((nominatedFilmList.length = 5)) {
       setErrorBanner(true);
     }
@@ -55,45 +66,65 @@ export default function Results() {
   return (
     <div>
       <Typography variant="h5">Results for {title}</Typography>
-      {searchList &&
-        searchList.map((movie) => (
-          <Card className={classes.root} key={movie.imdbID}>
-            <CardActionArea>
-              <CardContent>
-                {movie.Poster === "N/A" ? null : (
-                  <CardMedia
-                    className={classes.media}
-                    image={movie.Poster}
-                    title="Movie Poster"
-                  />
-                )}
-                <Typography gutterBottom variant="body1">
-                  {movie.Title}
-                </Typography>
-                <Typography variant="body2" color="textSecondary" component="p">
-                  {movie.Year}
-                </Typography>
-              </CardContent>
-            </CardActionArea>
-            <CardActions className={classes.actions}>
-              <Button
-                type="button"
-                size="small"
-                color="primary"
-                variant="contained"
-                onClick={() => handleNomination(movie)}
-                disabled={
-                  nominatedFilmList &&
-                  !!nominatedFilmList.find(
-                    (nominated) => nominated.id === movie.imdbID
-                  )
-                }
-              >
-                Nominate
-              </Button>
-            </CardActions>
-          </Card>
-        ))}
+      <Grid
+        container
+        spacing={4}
+        direction="row"
+        justify="center"
+        alignItems="flex-start"
+      >
+        <Grid item>
+          {searchList &&
+            searchList.map((movie) => (
+              <Card className={classes.root} key={movie.imdbID}>
+                <CardActionArea>
+                  <CardContent>
+                    {movie.Poster === "N/A" ? (
+                      <Typography variant="h6">No Preview Available</Typography>
+                    ) : (
+                      <CardMedia
+                        className={classes.media}
+                        image={movie.Poster}
+                        title="Movie Poster"
+                      />
+                    )}
+                    <Typography
+                      className={classes.title}
+                      gutterBottom
+                      variant="body1"
+                    >
+                      {movie.Title}
+                    </Typography>
+                    <Typography
+                      variant="body2"
+                      color="textSecondary"
+                      component="p"
+                    >
+                      {movie.Year}
+                    </Typography>
+                  </CardContent>
+                </CardActionArea>
+                <CardActions className={classes.actions}>
+                  <Button
+                    type="button"
+                    size="small"
+                    color="primary"
+                    variant="contained"
+                    onClick={() => handleNomination(movie)}
+                    disabled={
+                      nominatedFilmList &&
+                      !!nominatedFilmList.find(
+                        (nominated) => nominated.id === movie.imdbID
+                      )
+                    }
+                  >
+                    Nominate
+                  </Button>
+                </CardActions>
+              </Card>
+            ))}
+        </Grid>
+      </Grid>
     </div>
   );
 }

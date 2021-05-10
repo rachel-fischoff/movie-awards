@@ -4,9 +4,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import InputLabel from "@material-ui/core/InputLabel";
 import Divider from "@material-ui/core/Divider";
 import Button from "@material-ui/core/Button";
-
-import Banner from "./Banner";
-import ErrorBanner from './ErrorBanner';
+import Typography from '@material-ui/core/Typography';
 
 const useStyles = makeStyles({
   label: {
@@ -20,7 +18,7 @@ const useStyles = makeStyles({
 export default function SearchBar() {
   const classes = useStyles();
 
-  const { setTitle, nominatedFilmList, errorBanner } = useContext(ResultsContext);
+  const { setTitle, noResults } = useContext(ResultsContext);
 
   const inputRef = useRef(null);
 
@@ -31,7 +29,6 @@ export default function SearchBar() {
 
   return (
     <div>
-      {/* //TODO: change to material ui  */}
       <form onSubmit={handleSubmit}>
         <InputLabel className={classes.label} htmlFor="title-search">
           {" "}
@@ -54,8 +51,12 @@ export default function SearchBar() {
         </Button>
       </form>
       <Divider />
-      {nominatedFilmList.length === 5 ? <Banner /> : null}
-      {errorBanner ? <ErrorBanner/> : null}
+      {/* why are you always true? */}
+      {/* {noResults ? (
+        <Typography variant="h6">
+          No Results for {title}! Please try another Search.
+        </Typography>
+      ) : null} */}
     </div>
   );
 }

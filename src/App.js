@@ -14,20 +14,8 @@ function App() {
         <Divider />
         <SearchBar />
         <Divider />
-        <Grid
-          container
-          spacing={4}
-          direction="row"
-          justify="center"
-          alignItems="flex-start"
-        >
-          <Grid item>
-            <Nominations />
-          </Grid>
-          <Grid item>
-            <Results />
-          </Grid>
-        </Grid>
+        <Nominations />
+        <Results />
       </main>
     </ResultsContextProvider>
   );
