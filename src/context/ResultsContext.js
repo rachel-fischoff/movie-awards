@@ -10,7 +10,7 @@ const ResultsContextProvider = (props) => {
   const [searchList, setSearchList] = useState([]);
   const [nominatedFilmList, setNominatedFilmList] = useState([]);
 
-  //Removes Duplicates from the API search results
+  //removes Duplicates from the API search results
   const removeDuplicates = (array, key) => {
     let lookup = new Set();
     return array.filter((obj) => !lookup.has(obj[key]) && lookup.add(obj[key]));
@@ -28,10 +28,6 @@ const ResultsContextProvider = (props) => {
   };
 
   useEffect(() => {
-    checkForNominations();
-  }, []);
-
-  useEffect(() => {
     axios
       .get(`https://www.omdbapi.com/?s=${title}&type=movie&apikey=b7e174c6`)
       .then((response) => {
@@ -39,14 +35,21 @@ const ResultsContextProvider = (props) => {
           let movieData = response.data.Search;
           let uniqueMovies = removeDuplicates(movieData, "imdbID");
           setSearchList(uniqueMovies);
+          setNoResults(false);
         } else if (response.data.Response === "False") {
+          console.log(response.data);
           setNoResults(true);
+          setSearchList([]);
         }
       })
       .catch((error) => {
         console.log(error);
       });
   }, [title]);
+
+  useEffect(() => {
+    checkForNominations();
+  }, []);
 
   return (
     <ResultsContext.Provider

@@ -12,8 +12,8 @@ import Grid from "@material-ui/core/Grid";
 
 const useStyles = makeStyles({
   root: {
-    height: "auto",
-    width: "auto",
+    height: "100%",
+    width: "100%",
     maxWidth: 200,
     maxHeight: 400,
     display: "inline-block",
@@ -69,7 +69,7 @@ export default function Results() {
       <Typography variant="h5">Results for {title}</Typography>
       <Grid
         container
-        spacing={4}
+        spacing={10}
         direction="row"
         justify="center"
         alignItems="flex-start"

@@ -4,7 +4,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import InputLabel from "@material-ui/core/InputLabel";
 import Divider from "@material-ui/core/Divider";
 import Button from "@material-ui/core/Button";
-import Typography from '@material-ui/core/Typography';
+import Typography from "@material-ui/core/Typography";
 
 const useStyles = makeStyles({
   label: {
@@ -52,11 +52,11 @@ export default function SearchBar() {
       </form>
       <Divider />
       {/* why are you always true? */}
-      {/* {noResults ? (
+      {noResults === true ? (
         <Typography variant="h6">
           No Results for {title}! Please try another Search.
         </Typography>
-      ) : null} */}
+      ) : null}
     </div>
   );
 }
