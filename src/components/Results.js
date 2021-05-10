@@ -12,13 +12,6 @@ import Grid from "@material-ui/core/Grid";
 
 const useStyles = makeStyles({
   root: {
-    height: "100%",
-    width: "100%",
-    maxWidth: 200,
-    maxHeight: 400,
-    display: "inline-block",
-    justifyContent: "center",
-    alignContent: "center",
     backgroundColor: "#E0E0E0",
     padding: "5px",
   },
@@ -69,15 +62,15 @@ export default function Results() {
       <Typography variant="h5">Results for {title}</Typography>
       <Grid
         container
-        spacing={10}
+        spacing={4}
         direction="row"
         justify="center"
-        alignItems="flex-start"
+        alignItems="stretch"
       >
-        <Grid item>
           {searchList &&
             searchList.map((movie) => (
-              <Card className={classes.root} key={movie.imdbID}>
+              <Grid item xs={12} sm={6} md={4} lg={4} key={movie.imdbID} >
+              <Card className={classes.root} >
                 <CardActionArea>
                   <CardContent>
                     {movie.Poster === "N/A" ? (
@@ -123,8 +116,9 @@ export default function Results() {
                   </Button>
                 </CardActions>
               </Card>
+              </Grid>
             ))}
-        </Grid>
+
       </Grid>
     </div>
   );

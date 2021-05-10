@@ -22,6 +22,8 @@ export default function SearchBar() {
 
   const inputRef = useRef(null);
 
+  console.log(noResults, 'noResults');
+
   const handleSubmit = (e) => {
     e.preventDefault();
     setTitle(inputRef.current.value);

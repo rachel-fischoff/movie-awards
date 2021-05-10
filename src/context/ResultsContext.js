@@ -28,23 +28,25 @@ const ResultsContextProvider = (props) => {
   };
 
   useEffect(() => {
-    axios
-      .get(`https://www.omdbapi.com/?s=${title}&type=movie&apikey=b7e174c6`)
-      .then((response) => {
-        if (response.data.Response === "True") {
-          let movieData = response.data.Search;
-          let uniqueMovies = removeDuplicates(movieData, "imdbID");
-          setSearchList(uniqueMovies);
-          setNoResults(false);
-        } else if (response.data.Response === "False") {
-          console.log(response.data);
-          setNoResults(true);
-          setSearchList([]);
-        }
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+    if (title) {
+      axios
+        .get(`https://www.omdbapi.com/?s=${title}&type=movie&apikey=b7e174c6`)
+        .then((response) => {
+          if (response.data.Response === "True") {
+            let movieData = response.data.Search;
+            let uniqueMovies = removeDuplicates(movieData, "imdbID");
+            setSearchList(uniqueMovies);
+            setNoResults(false);
+          } else if (response.data.Response === "False") {
+            console.log(response.data);
+            setNoResults(true);
+            setSearchList([]);
+          }
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    }
   }, [title]);
 
   useEffect(() => {

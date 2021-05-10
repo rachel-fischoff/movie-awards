@@ -10,12 +10,7 @@ import Grid from "@material-ui/core/Grid";
 
 const useStyles = makeStyles({
   root: {
-    minWidth: 275,
-    maxWidth: 400,
     backgroundColor: "#E0E0E0",
-  },
-  title: {
-    fontSize: 14,
   },
   actions: {
     justifyContent: "center",
@@ -47,12 +42,12 @@ export default function NominationCard() {
         spacing={4}
         direction="row"
         justify="center"
-        alignItems="flex-start"
+        alignItems="stretch"
       >
-        <Grid item>
-          {nominatedFilmList &&
-            nominatedFilmList.map((movie) => (
-              <Card className={classes.root} variant="outlined" key={movie.id}>
+        {nominatedFilmList &&
+          nominatedFilmList.map((movie) => (
+            <Grid item xs={6} md={3} key={movie.id}>
+              <Card className={classes.root} variant="outlined" >
                 <CardContent>
                   <Typography className={classes.title}>
                     {movie.year}
@@ -72,8 +67,8 @@ export default function NominationCard() {
                   </Button>
                 </CardActions>
               </Card>
-            ))}
-        </Grid>
+            </Grid>
+          ))}
       </Grid>
     </div>
   );
