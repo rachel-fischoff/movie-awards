@@ -55,7 +55,7 @@ export default function Results() {
       setNominatedFilmList([...nominatedFilmList, nominatedObject]);
       //set to local storage for persistent state
       localStorage.setItem(
-        `nominatedFilm${nominatedFilmList.length}`,
+        `nominatedFilm${movie.imdbID}`,
         JSON.stringify(nominatedObject)
       );
     } else if ((nominatedFilmList.length = 5)) {

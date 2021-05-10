@@ -36,7 +36,7 @@ export default function NominationCard() {
     //remove from local storage
     localStorage.removeItem(
       //This is wrong
-      `nominatedFilm${nominatedFilmList.length-1}`
+      `nominatedFilm${movie.id}`
     );
   };
 

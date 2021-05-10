@@ -3,7 +3,6 @@ import ResultsContextProvider from "./context/ResultsContext";
 import SearchBar from "./components/SearchBar";
 import Results from "./components/Results";
 import Nominations from "./components/Nominations";
-import Grid from "@material-ui/core/Grid";
 import Divider from "@material-ui/core/Divider";
 
 function App() {
