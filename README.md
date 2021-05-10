@@ -6,10 +6,13 @@ The goal of this project is to create a web page that uses [OMDB](http://www.omd
 The project is deployed through [Netlify](https://rachel-fischoff-movie-awards.netlify.app/) and can be found at https://rachel-fischoff-movie-awards.netlify.app/
 
 ## How Does it Work?
-Upon opening the web page, the user can search for their favorite films in the search bar & then nominate up for 5 for awards season. 
+Upon opening the web page, the user can search for their favorite films in the search bar & then nominate up to 5 films for awards season. 
 
 ## Next Steps
-Add Testing 
+1. Create Sharable Links
+1. Pagination
+1. Add Testing 
+1. Animations for loading
 
 # Requirements To Set Up Locally
 1. A command line application such as Terminal.

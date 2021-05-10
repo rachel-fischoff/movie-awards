@@ -18,12 +18,10 @@ const ResultsContextProvider = (props) => {
 
   //checks local storage for nominations
   const checkForNominations = () => {
-
     let localStorageItems = [];
     let keys = Object.keys(localStorage);
-    let i = keys.length
-
-    while(i--){
+    let i = keys.length;
+    while (i--) {
       localStorageItems.push(JSON.parse(localStorage.getItem(keys[i])));
     }
     setNominatedFilmList(localStorageItems);

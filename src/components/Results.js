@@ -58,6 +58,7 @@ export default function Results() {
         `nominatedFilm${movie.imdbID}`,
         JSON.stringify(nominatedObject)
       );
+      //if you already have 5 movies nominated an error banner will appear
     } else if ((nominatedFilmList.length = 5)) {
       setErrorBanner(true);
     }

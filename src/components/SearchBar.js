@@ -18,7 +18,7 @@ const useStyles = makeStyles({
 export default function SearchBar() {
   const classes = useStyles();
 
-  const { setTitle, noResults } = useContext(ResultsContext);
+  const { title, setTitle, noResults } = useContext(ResultsContext);
 
   const inputRef = useRef(null);
 
